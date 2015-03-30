@@ -101,16 +101,16 @@ public class UserManager {
 	
 	public void updateUser(String username, User user)
 	{
-		String sql = "update user set username=?, password=?, firstName=?, lastName=?, email=?, dateOfBirth=? where username=?";
+		String sql = "update user set password=?, firstName=?, lastName=?, email=?, dateOfBirth=? where username=?";
 		try {
 			Connection connection = ds.getConnection();
 			PreparedStatement statement = connection.prepareStatement(sql);
-			statement.setString(1, user.getUsername());
-			statement.setString(2, user.getPassword());
-			statement.setString(3, user.getFirstName());
-			statement.setString(4, user.getLastName());
-			statement.setString(5, user.getEmail());
-			statement.setDate(6, user.getDateOfBirth());
+			statement.setString(1, user.getPassword());
+			statement.setString(2, user.getFirstName());
+			statement.setString(3, user.getLastName());
+			statement.setString(4, user.getEmail());
+			statement.setDate(5, user.getDateOfBirth());
+			statement.setString(6, username);
 			statement.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
