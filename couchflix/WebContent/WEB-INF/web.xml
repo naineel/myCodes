@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
+  <display-name>CouchFlix</display-name>
+  <welcome-file-list>
+    <welcome-file>index.jsp</welcome-file>
+  </welcome-file-list>
+  <servlet>
+    <servlet-name>home</servlet-name>
+    <servlet-class>com.couchflix.servlet.VerifyPassword</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>home</servlet-name>
+    <url-pattern>/VerifyPassword</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>lostPasswordServlet</servlet-name>
+    <servlet-class>com.couchflix.servlet.lostPasswordServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>lostPasswordServlet</servlet-name>
+    <url-pattern>/lostPasswordServlet</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>LogOutServlet</servlet-name>
+    <servlet-class>com.couchflix.servlet.LogOutServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LogOutServlet</servlet-name>
+    <url-pattern>/LogOutServlet</url-pattern>
+  </servlet-mapping>
+
+	<servlet>
+		<servlet-name>UpdateProfile</servlet-name>
+		<servlet-class>com.couchflix.servlet.UpdateProfile</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>UpdateProfile</servlet-name>
+		<url-pattern>/UpdateProfile</url-pattern>
+	</servlet-mapping>
+   
+  <servlet>
+    <servlet-name>com.couchflix.MyApplication</servlet-name>
+    <servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>
+    <init-param>
+      <param-name>javax.ws.rs.Application</param-name>
+      <param-value>com.couchflix.MyApplication</param-value>
+    </init-param>
+    <init-param>
+      <param-name>jersey.config.server.provider.packages</param-name>
+      <param-value>com.couchflix</param-value>
+    </init-param>
+    <init-param>
+      <param-name>jersey.config.server.provider.packages</param-name>
+      <param-value>
+    			com.jersey.jaxb,com.fasterxml.jackson.jaxrs.json
+			</param-value>
+    </init-param>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>com.couchflix.MyApplication</servlet-name>
+    <url-pattern>/api/*</url-pattern>
+  </servlet-mapping>
+</web-app>
